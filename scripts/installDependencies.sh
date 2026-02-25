@@ -9,12 +9,12 @@ installDotnet() {
       sudo dpkg -i packages-microsoft-prod.deb &&
       rm packages-microsoft-prod.deb &&
       sudo apt update &&
-      sudo apt install -y dotnet-sdk-7.0
+      sudo apt install -y dotnet-sdk-10.0
     ;;
   "dnf")
     sudo dnf install -y gtk3 gdk-pixbuf2 libX11 &&
-      sudo dnf install dotnet-sdk-7.0 &&
-      sudo dnf install dotnet-runtime-7.0
+      sudo rpm -Uvh https://packages.microsoft.com/config/fedora/$(rpm -E %fedora)/packages-microsoft-prod.rpm &&
+      sudo dnf install dotnet-sdk-10.0
     ;;
   "pacman")
     sudo pacman -S --needed gtk3 gdk-pixbuf2 libx11 &&
@@ -22,8 +22,8 @@ installDotnet() {
     ;;
   "zypper")
     sudo zypper --non-interactive install gtk3 gdk-pixbuf2 libX11-6 &&
-      sudo zypper --non-interactive install dotnet-sdk-7.0 &&
-      sudo zypper --non-interactive install dotnet-runtime-7.0
+      sudo rpm -Uvh --replacepkgs https://packages.microsoft.com/config/opensuse/$(rpm -E %opensuse)/packages-microsoft-prod.rpm &&
+      sudo zypper --non-interactive --gpg-auto-import-keys install dotnet-sdk-10.0
     ;;
   *)
     echo "Package manager is unsupported / not found" >&2

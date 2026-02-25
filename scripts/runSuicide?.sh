@@ -11,7 +11,7 @@ if [[ "$choice" == y || "$choice" == yes ]]; then
   cd "$SCRIPT_DIR"
   cd ..
   cd ..
-  rm -rf VolBriController
+  rm -rf InstallerScript
 else
   echo "If you ever change your mind go to $SCRIPT_DIR and run me again!"
   echo "( i am called 'runSuicide?.sh' just so you know )"
