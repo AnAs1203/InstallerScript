@@ -15,14 +15,17 @@ cd "$PUBLISH_DIR"
 
 cat <<EOF >"$HOME/launch-bvc.sh"
 #!/usr/bin/env bash
-nohup $PUBLISH_DIR/VolumeBrightnessctl &
+nohup $PUBLISH_DIR/VolumeBrightnessctl >/dev/null 2>&1 &
 EOF
 
 chmod +x "$HOME/launch-bvc.sh"
 
 echo "------------------------------------------------------------"
+printf '\n'
 echo "YOU CAN FIND THE LAUNCH SCRIPT AT $HOME/launch-bvc.sh !!!!!!"
+printf '\n'
 echo "TO RUN THE APP JUST TYPE ( $HOME/launch-bvc.sh ) IN YOUR TERMINAL OR IF YOU'RE ALREADY IN THE HOME DIRECTORY RUN ./launch-bvc.sh RIGHT AWAY!"
+printf '\n'
 echo "------------------------------------------------------------"
 
 echo "Meowie!"
