@@ -20,6 +20,15 @@ EOF
 
 chmod +x "$HOME/launch-bvc.sh"
 
+sudo tee /etc/udev/rules.d/90-backlight.rules >/dev/null <<'EOF'
+ACTION=="add", SUBSYSTEM=="backlight", \
+GROUP="video", MODE="0664"
+EOF
+
+sudo usermod -aG video $USER
+sudo udevadm control --reload-rules
+sudo udevadm trigger
+
 echo "------------------------------------------------------------"
 printf '\n'
 echo "YOU CAN FIND THE LAUNCH SCRIPT AT $HOME/launch-bvc.sh !!!!!!"
